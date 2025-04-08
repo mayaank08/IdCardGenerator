@@ -1,0 +1,124 @@
+🎓 Unity Internship Assignment
+📌 Project Title: Smart Student ID Generator (ReactJS + Replit)
+
+🚀 Objective
+Build a mini version of Unity’s Student ID Card generation module using ReactJS on Replit/Lovable/V0. Test your logic, UI polish, integration mindset, and attention to detail — just like you would in the real Unity team.
+
+🛠️ Tech Requirements
+ReactJS (18+)
+
+
+Use @lovable/replit/v0
+
+
+Use libraries like:
+
+
+qrcode.react for QR Code
+
+
+html-to-image for download as PNG
+
+
+Any styling method (TailwindCSS preferred)
+
+
+
+📋 Features You Need to Build
+1. Student Data Form
+Capture these fields:
+Name
+
+
+Roll Number
+
+
+Class & Division (dropdown)
+
+
+Allergies (multi-select)
+
+
+Photo Upload (with preview)
+
+
+Rack Number
+
+
+Bus Route Number (dropdown)
+
+
+Submit Button
+
+
+2. Smart ID Card Preview
+Once submitted, generate an ID card view that shows:
+Student info
+
+
+Photo
+
+
+Allergies (if any)
+
+
+Rack & Bus Route
+
+
+QR Code (containing full JSON of student data)
+
+
+“Download as PNG” button
+
+
+3. Template Switching
+Add a dropdown/toggle to switch between 2 design templates
+
+
+4. (Bonus) Persistent Data
+Save entries to localStorage
+
+
+Allow listing + downloading older cards
+
+
+
+📹 Final Deliverables
+✅ Working Replit Project
+ ✅ 3–5 minute Video Walkthrough showing:
+Form entry
+
+
+Template switch
+
+
+Card preview & download
+ ✅ Well-written README with your thought process
+
+
+
+📬 Submission Instructions
+Email your application to: nikhil@unityedu.ai
+ Subject Line: Unity Intern Application - [Your Name]
+Include the following in your email:
+Your CV
+
+
+Replit Link, GitHub Repo (optional), and Video Walkthrough Link (YouTube/Drive)
+
+
+Expected Stipend or Salary
+
+
+Joining Period (When can you start?)
+
+
+Maximum Duration you are available for (e.g., 1 month, 3 months, etc.)
+
+
+Can you work from the office (Pune)? If yes, mention how many days/week.
+
+
+
+⏰ Deadline
+Submit within 48 hours of receiving this brief.
