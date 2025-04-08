@@ -63,9 +63,9 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
   };
   
   return (
-    <Card className="bg-white shadow-md rounded-lg">
+    <Card className="bg-white dark:bg-gray-900 shadow-md rounded-lg transition-colors duration-200">
       <CardContent className="p-6">
-        <h2 className="text-xl font-display font-semibold mb-4">ID Card Preview</h2>
+        <h2 className="text-xl font-display font-semibold mb-4 dark:text-white transition-colors duration-200">ID Card Preview</h2>
         
         {/* Template 1: Blue Gradient Design */}
         <div

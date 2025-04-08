@@ -157,13 +157,13 @@ export default function StudentForm({
   };
 
   return (
-    <Card className="bg-white shadow-md rounded-lg">
+    <Card className="bg-white dark:bg-gray-900 shadow-md rounded-lg transition-colors duration-200">
       <CardContent className="p-6">
-        <h2 className="text-xl font-display font-semibold mb-4">Student Information</h2>
+        <h2 className="text-xl font-display font-semibold mb-4 dark:text-white transition-colors duration-200">Student Information</h2>
         <form onSubmit={handleSubmit}>
           {/* Student Name */}
           <div className="mb-4">
-            <Label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <Label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-200">
               Full Name
             </Label>
             <Input
@@ -337,7 +337,7 @@ export default function StudentForm({
           
           {/* Template Selector */}
           <div className="mb-6">
-            <Label className="block text-sm font-medium text-gray-700 mb-1">
+            <Label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-200">
               ID Card Template
             </Label>
             <div className="flex flex-wrap gap-4">
@@ -353,9 +353,9 @@ export default function StudentForm({
                 />
                 <label
                   htmlFor="template1"
-                  className="flex flex-col items-center p-2 text-gray-500 bg-white border border-gray-300 rounded-lg cursor-pointer peer-checked:border-primary-500 peer-checked:text-primary-500 hover:text-gray-600 hover:bg-gray-50 transition-all shadow-sm hover:shadow"
+                  className="flex flex-col items-center p-2 text-gray-500 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer peer-checked:border-primary-500 peer-checked:text-primary-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm hover:shadow"
                 >
-                  <span className="w-20 h-12 rounded card-gradient-3 border border-gray-200 mb-1 shadow-inner"></span>
+                  <span className="w-20 h-12 rounded card-gradient-3 border border-gray-200 dark:border-gray-700 mb-1 shadow-inner"></span>
                   <span className="text-xs font-medium">Blue Gradient</span>
                 </label>
                 {selectedTemplate === "template1" && (
@@ -377,9 +377,9 @@ export default function StudentForm({
                 />
                 <label
                   htmlFor="template2"
-                  className="flex flex-col items-center p-2 text-gray-500 bg-white border border-gray-300 rounded-lg cursor-pointer peer-checked:border-primary-500 peer-checked:text-primary-500 hover:text-gray-600 hover:bg-gray-50 transition-all shadow-sm hover:shadow"
+                  className="flex flex-col items-center p-2 text-gray-500 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer peer-checked:border-primary-500 peer-checked:text-primary-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm hover:shadow"
                 >
-                  <span className="w-20 h-12 rounded card-gradient-1 border border-gray-200 mb-1 shadow-inner"></span>
+                  <span className="w-20 h-12 rounded card-gradient-1 border border-gray-200 dark:border-gray-700 mb-1 shadow-inner"></span>
                   <span className="text-xs font-medium">Purple Gradient</span>
                 </label>
                 {selectedTemplate === "template2" && (

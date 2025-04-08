@@ -107,14 +107,14 @@ export default function SavedCardsModal({ onClose, refreshTrigger }: SavedCardsM
   };
   
   return (
-    <div className="fixed inset-0 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-5xl mx-4">
+    <div className="fixed inset-0 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl w-full max-w-5xl mx-4 transition-colors duration-200">
         <div className="px-4 pt-5 pb-4 sm:p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">Saved ID Cards</h3>
+            <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white transition-colors duration-200">Saved ID Cards</h3>
             <button 
               type="button" 
-              className="text-gray-400 hover:text-gray-500"
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
               onClick={onClose}
             >
               <i className="ri-close-line text-xl"></i>
@@ -124,8 +124,8 @@ export default function SavedCardsModal({ onClose, refreshTrigger }: SavedCardsM
           {savedCards.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {savedCards.map((card, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden shadow-sm">
-                  <div className="bg-primary-500 px-3 py-2 text-white flex justify-between items-center">
+                <div key={index} className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm dark:shadow-gray-800/20 transition-colors duration-200">
+                  <div className="bg-primary-500 dark:bg-primary-700 px-3 py-2 text-white flex justify-between items-center transition-colors duration-200">
                     <h4 className="text-sm font-semibold truncate">{card.name}</h4>
                     <div className="flex items-center space-x-2">
                       <button
@@ -144,10 +144,10 @@ export default function SavedCardsModal({ onClose, refreshTrigger }: SavedCardsM
                       </button>
                     </div>
                   </div>
-                  <div className="p-3">
+                  <div className="p-3 bg-white dark:bg-gray-800 transition-colors duration-200">
                     <div className="flex items-center">
                       {card.photo ? (
-                        <div className="w-12 h-12 bg-gray-100 mr-3 flex-shrink-0">
+                        <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 mr-3 flex-shrink-0 transition-colors duration-200">
                           <img
                             src={card.photo}
                             alt="Student"
@@ -155,14 +155,14 @@ export default function SavedCardsModal({ onClose, refreshTrigger }: SavedCardsM
                           />
                         </div>
                       ) : (
-                        <div className="w-12 h-12 bg-gray-100 mr-3 flex-shrink-0 flex items-center justify-center">
-                          <i className="ri-user-3-line text-gray-400"></i>
+                        <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 mr-3 flex-shrink-0 flex items-center justify-center transition-colors duration-200">
+                          <i className="ri-user-3-line text-gray-400 dark:text-gray-500"></i>
                         </div>
                       )}
                       <div className="text-sm">
-                        <p className="font-semibold">{card.rollNumber}</p>
-                        <p className="text-gray-600">{card.classDivision}</p>
-                        <p className="text-gray-500 text-xs">
+                        <p className="font-semibold dark:text-white transition-colors duration-200">{card.rollNumber}</p>
+                        <p className="text-gray-600 dark:text-gray-300 transition-colors duration-200">{card.classDivision}</p>
+                        <p className="text-gray-500 dark:text-gray-400 text-xs transition-colors duration-200">
                           Created on: {formatDate(card.createdAt)}
                         </p>
                       </div>
@@ -173,13 +173,13 @@ export default function SavedCardsModal({ onClose, refreshTrigger }: SavedCardsM
             </div>
           ) : (
             <div className="text-center py-8">
-              <i className="ri-folder-info-line text-4xl text-gray-300"></i>
-              <p className="mt-2 text-gray-500">No saved ID cards found</p>
-              <p className="text-sm text-gray-400">Generate an ID card to save it for later</p>
+              <i className="ri-folder-info-line text-4xl text-gray-300 dark:text-gray-600 transition-colors duration-200"></i>
+              <p className="mt-2 text-gray-500 dark:text-gray-400 transition-colors duration-200">No saved ID cards found</p>
+              <p className="text-sm text-gray-400 dark:text-gray-500 transition-colors duration-200">Generate an ID card to save it for later</p>
             </div>
           )}
         </div>
-        <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <div className="bg-gray-50 dark:bg-gray-800 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-gray-200 dark:border-gray-700 transition-colors duration-200">
           <Button
             type="button"
             onClick={onClose}
