@@ -17,7 +17,9 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
   const { toast } = useToast();
   const captureRef1 = useRef<HTMLDivElement>(null);
   const captureRef2 = useRef<HTMLDivElement>(null);
+  const captureRef3 = useRef<HTMLDivElement>(null);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
+  const [downloadSuccess, setDownloadSuccess] = useState(false);
   
   useEffect(() => {
     // Show download button when student data is available
@@ -29,8 +31,6 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
       onCardSaved();
     }
   }, [studentData, onCardSaved]);
-  
-  const captureRef3 = useRef<HTMLDivElement>(null);
   
   const handleDownloadCard = async () => {
     if (!studentData) return;
@@ -58,6 +58,10 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
       link.download = `unity-id-${studentData.name.replace(/\s+/g, "-").toLowerCase()}.png`;
       link.href = dataUrl;
       link.click();
+      
+      // Show success animation
+      setDownloadSuccess(true);
+      setTimeout(() => setDownloadSuccess(false), 3000);
       
       toast({
         title: "Success!",
@@ -427,10 +431,14 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
             <Button
               type="button"
               onClick={handleDownloadCard}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500"
+              className={`inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white 
+              ${downloadSuccess 
+                ? "bg-green-600 hover:bg-green-700 focus:ring-green-500" 
+                : "bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500"} 
+              focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300`}
             >
-              <i className="ri-download-2-line mr-2"></i>
-              Download ID Card
+              <i className={`${downloadSuccess ? "ri-check-line" : "ri-download-2-line"} mr-2 transition-all duration-300`}></i>
+              {downloadSuccess ? "Downloaded!" : "Download ID Card"}
             </Button>
           </div>
         )}
