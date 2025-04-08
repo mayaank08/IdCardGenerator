@@ -1,4 +1,4 @@
-export type CardTemplate = "template1" | "template2";
+export type CardTemplate = "template1" | "template2" | "template3";
 
 export interface StudentData {
   name: string;

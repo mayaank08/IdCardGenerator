@@ -30,11 +30,22 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
     }
   }, [studentData, onCardSaved]);
   
+  const captureRef3 = useRef<HTMLDivElement>(null);
+  
   const handleDownloadCard = async () => {
     if (!studentData) return;
     
     try {
-      const captureRef = template === "template1" ? captureRef1 : captureRef2;
+      let captureRef;
+      
+      if (template === "template1") {
+        captureRef = captureRef1;
+      } else if (template === "template2") {
+        captureRef = captureRef2;
+      } else {
+        captureRef = captureRef3;
+      }
+      
       if (!captureRef.current) return;
       
       const dataUrl = await htmlToImage.toPng(captureRef.current, {
@@ -289,6 +300,122 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
                 <span className="opacity-80">Unity School</span> 
                 <span className="mx-2 opacity-50">•</span> 
                 <span className="bg-gradient-to-r from-pink-300 to-purple-200 text-transparent bg-clip-text">Academic Year 2023-24</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* Template 3: Green Gradient Design */}
+        <div
+          id="idCardTemplate3"
+          className={`card-template-3 mx-auto max-w-sm rounded-lg overflow-hidden shadow-xl ${
+            template !== "template3" ? "hidden" : ""
+          }`}
+          style={{
+            color: "white",
+            border: "1px solid #10b981",
+          }}
+        >
+          <div id="captureArea3" className="relative card-gradient-4" ref={captureRef3}>
+            {/* Card Header */}
+            <div className="flex justify-between items-center px-6 py-4">
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full border border-white/20">
+                <h3 className="text-lg font-bold">UNITY SCHOOL</h3>
+              </div>
+              <div className="bg-white rounded-md p-1 w-12 h-12 flex items-center justify-center shadow-lg">
+                <span className="bg-gradient-to-br from-green-500 to-blue-500 bg-clip-text text-transparent font-bold text-lg">U</span>
+              </div>
+            </div>
+            
+            {/* Card Body */}
+            <div className="px-6 py-4">
+              <div className="flex">
+                {/* Student Photo */}
+                <div className="w-28 h-28 bg-white rounded-lg overflow-hidden shadow-lg border-2 border-teal-400/30 flex items-center justify-center">
+                  {studentData?.photo ? (
+                    <img 
+                      src={studentData.photo} 
+                      alt="Student" 
+                      className="w-full h-full object-cover" 
+                    />
+                  ) : (
+                    <i className="ri-user-3-line text-3xl text-gray-400"></i>
+                  )}
+                </div>
+                
+                {/* Student Details */}
+                <div className="flex-1 ml-4">
+                  <h4 className="font-bold text-xl text-white">
+                    {studentData?.name || "Student Name"}
+                  </h4>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 mt-2 border border-white/10">
+                    <div className="text-sm space-y-1.5">
+                      <p className="flex items-center">
+                        <span className="text-white/70 w-20 text-xs uppercase">Roll No:</span>
+                        <span className="font-medium text-white">{studentData?.rollNumber || "---"}</span>
+                      </p>
+                      <p className="flex items-center">
+                        <span className="text-white/70 w-20 text-xs uppercase">Class:</span>
+                        <span className="font-medium text-white">{studentData?.classDivision || "---"}</span>
+                      </p>
+                      <p className="flex items-center">
+                        <span className="text-white/70 w-20 text-xs uppercase">Rack No:</span>
+                        <span className="font-medium text-white">{studentData?.rackNumber || "---"}</span>
+                      </p>
+                      <p className="flex items-center">
+                        <span className="text-white/70 w-20 text-xs uppercase">Bus Route:</span>
+                        <span className="font-medium text-white">{studentData?.busRoute || "---"}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Allergies Section (conditionally shown) */}
+              {studentData?.allergies && studentData.allergies.length > 0 && (
+                <div className="mt-4 bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                  <h5 className="text-xs font-semibold text-white/90 uppercase tracking-wider flex items-center">
+                    <i className="ri-alert-line mr-1.5 text-yellow-300"></i>
+                    Health Information
+                  </h5>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {studentData.allergies.map((allergy) => (
+                      <span 
+                        key={allergy}
+                        className="px-2.5 py-1 bg-teal-500/30 text-white rounded-md text-xs font-medium"
+                      >
+                        {allergy}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {/* QR Code Section */}
+              <div className="mt-4 flex justify-center">
+                <div className="p-2 bg-white rounded-md w-32 h-32 flex items-center justify-center shadow-lg border border-teal-400/30">
+                  {studentData ? (
+                    <QRCodeSVG 
+                      value={JSON.stringify(studentData)} 
+                      size={112} 
+                      level="M"
+                      bgColor="#FFFFFF"
+                      fgColor="#0D9488"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-100"></div>
+                  )}
+                </div>
+              </div>
+            </div>
+            
+            {/* Card Footer */}
+            <div className="px-6 py-3 text-center text-xs bg-white/5 backdrop-blur-sm border-t border-white/10">
+              <p className="font-medium text-white/90">ID must be displayed at all times on campus</p>
+              <p className="font-semibold mt-1">
+                <span className="text-teal-300">Unity School</span> 
+                <span className="mx-2 text-white/50">|</span> 
+                <span className="text-white/80">Academic Year 2023-24</span>
               </p>
             </div>
           </div>
