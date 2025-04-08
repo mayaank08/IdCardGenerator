@@ -67,29 +67,29 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
       <CardContent className="p-6">
         <h2 className="text-xl font-display font-semibold mb-4">ID Card Preview</h2>
         
-        {/* Template 1: Classic Design */}
+        {/* Template 1: Blue Gradient Design */}
         <div
           id="idCardTemplate1"
-          className={`card-template-1 mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg ${
+          className={`card-template-1 mx-auto max-w-sm rounded-lg overflow-hidden shadow-xl ${
             template !== "template1" ? "hidden" : ""
           }`}
           style={{
-            background: "linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%)",
+            background: "linear-gradient(135deg, #ffffff 0%, #f8faff 100%)",
             border: "1px solid #e5e7eb",
           }}
         >
           <div id="captureArea1" className="relative" ref={captureRef1}>
             {/* Card Header */}
-            <div className="bg-primary-500 px-6 py-3 text-white">
+            <div className="card-gradient-3 px-6 py-4 text-white">
               <div className="flex justify-between items-center">
                 <div>
                   <h3 className="text-lg font-bold">Unity School</h3>
-                  <p className="text-xs">Student Identification Card</p>
+                  <p className="text-xs opacity-90">Student Identification Card</p>
                 </div>
-                <div className="w-12 h-12">
+                <div className="w-14 h-14">
                   {/* Logo Placeholder */}
-                  <div className="bg-white rounded-full w-full h-full flex items-center justify-center">
-                    <span className="text-primary-500 font-bold text-xs">UNITY</span>
+                  <div className="bg-white rounded-full w-full h-full flex items-center justify-center shadow-md border-2 border-white/30">
+                    <span className="bg-gradient-to-br from-blue-500 to-indigo-600 bg-clip-text text-transparent font-bold text-sm">UNITY</span>
                   </div>
                 </div>
               </div>
@@ -181,24 +181,29 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
           </div>
         </div>
         
-        {/* Template 2: Modern Design */}
+        {/* Template 2: Purple Gradient Design */}
         <div
           id="idCardTemplate2"
-          className={`card-template-2 mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg ${
+          className={`card-template-2 mx-auto max-w-sm rounded-lg overflow-hidden shadow-xl ${
             template !== "template2" ? "hidden" : ""
           }`}
           style={{
-            background: "linear-gradient(135deg, #3949AB 0%, #232C67 100%)",
             color: "white",
-            border: "1px solid #3949AB",
+            border: "1px solid #6366f1",
           }}
         >
-          <div id="captureArea2" className="relative" ref={captureRef2}>
+          <div id="captureArea2" className="relative card-gradient-1" ref={captureRef2}>
             {/* Card Header */}
-            <div className="flex justify-between items-center px-6 py-3 border-b border-primary-400">
-              <h3 className="text-lg font-bold font-display">Unity School</h3>
-              <div className="bg-white rounded-full p-1 w-8 h-8 flex items-center justify-center">
-                <span className="text-primary-600 font-bold text-xs">U</span>
+            <div className="flex justify-between items-center px-6 py-4 border-b border-white/20">
+              <div>
+                <h3 className="text-xl font-bold font-display tracking-wide">Unity School</h3>
+                <div className="flex items-center mt-1">
+                  <div className="h-1 w-8 bg-white/60 rounded-full mr-1"></div>
+                  <div className="h-1 w-1 bg-white/60 rounded-full"></div>
+                </div>
+              </div>
+              <div className="bg-white rounded-full p-1.5 w-10 h-10 flex items-center justify-center shadow-lg">
+                <span className="bg-gradient-to-br from-purple-600 to-pink-600 bg-clip-text text-transparent font-bold text-sm">U</span>
               </div>
             </div>
             
@@ -206,7 +211,7 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
             <div className="px-6 py-4">
               <div className="text-center mb-3">
                 {/* Student Photo */}
-                <div className="w-24 h-24 mx-auto bg-white rounded-full border-4 border-white overflow-hidden shadow-md flex items-center justify-center">
+                <div className="w-28 h-28 mx-auto bg-white rounded-full border-4 border-pink-400/50 overflow-hidden shadow-xl flex items-center justify-center">
                   {studentData?.photo ? (
                     <img 
                       src={studentData.photo} 
@@ -217,39 +222,40 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
                     <i className="ri-user-3-line text-3xl text-gray-400"></i>
                   )}
                 </div>
-                <h4 className="font-bold text-xl mt-2">
+                <h4 className="font-bold text-xl mt-3 text-white">
                   {studentData?.name || "Student Name"}
                 </h4>
-                <div className="text-primary-200 text-sm">
-                  <span>{studentData?.rollNumber || "---"}</span> • 
+                <div className="text-white/80 text-sm">
+                  <span>{studentData?.rollNumber || "---"}</span>
+                  <span className="px-2 opacity-50">•</span>
                   <span>{studentData?.classDivision || "---"}</span>
                 </div>
               </div>
               
               {/* Student Details */}
-              <div className="bg-primary-600/50 rounded-lg p-3 mt-3">
-                <div className="grid grid-cols-2 gap-2 text-sm">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-4 border border-white/10 shadow-inner">
+                <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="text-primary-200">Rack Number</p>
-                    <p className="font-medium">{studentData?.rackNumber || "---"}</p>
+                    <p className="text-white/70 text-xs uppercase tracking-wider">Rack Number</p>
+                    <p className="font-medium text-white">{studentData?.rackNumber || "---"}</p>
                   </div>
                   <div>
-                    <p className="text-primary-200">Bus Route</p>
-                    <p className="font-medium">{studentData?.busRoute || "---"}</p>
+                    <p className="text-white/70 text-xs uppercase tracking-wider">Bus Route</p>
+                    <p className="font-medium text-white">{studentData?.busRoute || "---"}</p>
                   </div>
                 </div>
                 
                 {/* Allergies Section (conditionally shown) */}
                 {studentData?.allergies && studentData.allergies.length > 0 && (
-                  <div className="mt-3 border-t border-primary-400 pt-2">
-                    <p className="text-primary-200">Allergies</p>
-                    <div className="flex flex-wrap gap-1 mt-1">
+                  <div className="mt-3 border-t border-white/20 pt-3">
+                    <p className="text-white/70 text-xs uppercase tracking-wider mb-1.5">Allergies</p>
+                    <div className="flex flex-wrap gap-1.5">
                       {studentData.allergies.map((allergy) => (
                         <span 
                           key={allergy}
-                          className="px-2 py-1 bg-white/10 text-white rounded text-xs flex items-center"
+                          className="px-2.5 py-1 bg-pink-500/40 text-white rounded-full text-xs font-medium flex items-center shadow-sm"
                         >
-                          <i className="ri-alert-line mr-1 text-secondary-300"></i>
+                          <i className="ri-alert-line mr-1.5"></i>
                           {allergy}
                         </span>
                       ))}
@@ -259,13 +265,15 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
               </div>
               
               {/* QR Code Section */}
-              <div className="mt-4 flex justify-center">
-                <div className="p-2 bg-white rounded-md w-24 h-24 flex items-center justify-center">
+              <div className="mt-6 flex justify-center">
+                <div className="p-1.5 bg-white rounded-lg w-28 h-28 flex items-center justify-center shadow-lg border border-pink-400/30">
                   {studentData ? (
                     <QRCodeSVG 
                       value={JSON.stringify(studentData)} 
-                      size={88} 
+                      size={98} 
                       level="M"
+                      bgColor="#FFFFFF"
+                      fgColor="#5D23B8"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-100"></div>
@@ -275,9 +283,13 @@ export default function IDCardPreview({ studentData, template, onCardSaved }: ID
             </div>
             
             {/* Card Footer */}
-            <div className="border-t border-primary-400 px-6 py-2 text-center text-xs text-primary-200">
-              <p>ID must be displayed at all times on campus</p>
-              <p className="font-semibold mt-1">Academic Year 2023-24</p>
+            <div className="border-t border-white/20 px-6 py-3 text-center text-xs">
+              <p className="text-white/80">ID must be displayed at all times on campus</p>
+              <p className="font-semibold mt-1 text-white">
+                <span className="opacity-80">Unity School</span> 
+                <span className="mx-2 opacity-50">•</span> 
+                <span className="bg-gradient-to-r from-pink-300 to-purple-200 text-transparent bg-clip-text">Academic Year 2023-24</span>
+              </p>
             </div>
           </div>
         </div>

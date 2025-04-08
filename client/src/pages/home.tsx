@@ -17,14 +17,17 @@ export default function Home() {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <header className="bg-white shadow-md border-b-4 border-primary/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-display font-bold text-primary-500">Unity Student ID Generator</h1>
+            <div>
+              <h1 className="text-3xl font-display font-bold gradient-text-primary">Unity Student ID Generator</h1>
+              <p className="text-gray-500 text-sm mt-1">Create beautiful, custom ID cards in seconds</p>
+            </div>
             <button 
-              className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-lg text-white bg-gradient-to-r from-primary to-purple-500 hover:from-primary-600 hover:to-purple-600 shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               onClick={() => setShowSavedCardsModal(true)}
             >
               <i className="ri-history-line mr-2"></i>
@@ -35,7 +38,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Form Section */}
           <div className="w-full lg:w-1/2">
@@ -54,6 +57,33 @@ export default function Home() {
               template={selectedTemplate}
               onCardSaved={handleCardSaved}
             />
+          </div>
+        </div>
+        
+        {/* Colorful Info Section */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-gradient-to-br from-purple-500 to-indigo-600 p-6 rounded-xl shadow-lg text-white">
+            <div className="flex items-center mb-3">
+              <i className="ri-shield-check-line text-2xl mr-2 opacity-80"></i>
+              <h3 className="text-xl font-bold">Secure Identification</h3>
+            </div>
+            <p className="opacity-90">Integrated QR codes allow for secure, instant verification of student information.</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-pink-500 to-rose-600 p-6 rounded-xl shadow-lg text-white">
+            <div className="flex items-center mb-3">
+              <i className="ri-paint-brush-line text-2xl mr-2 opacity-80"></i>
+              <h3 className="text-xl font-bold">Custom Templates</h3>
+            </div>
+            <p className="opacity-90">Choose from multiple stunning designs to match your school's branding and style.</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-500 to-cyan-600 p-6 rounded-xl shadow-lg text-white">
+            <div className="flex items-center mb-3">
+              <i className="ri-database-2-line text-2xl mr-2 opacity-80"></i>
+              <h3 className="text-xl font-bold">Easy Management</h3>
+            </div>
+            <p className="opacity-90">Save generated ID cards for future reference and easy access whenever you need them.</p>
           </div>
         </div>
       </main>

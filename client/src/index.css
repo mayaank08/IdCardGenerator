@@ -10,4 +10,30 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+
+  /* Gradient text utilities */
+  .gradient-text-primary {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400;
+  }
+
+  .gradient-text-secondary {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-secondary;
+  }
+
+  /* Card gradients */
+  .card-gradient-1 {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  }
+
+  .card-gradient-2 {
+    background: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #d946ef 100%);
+  }
+
+  .card-gradient-3 {
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #8b5cf6 100%);
+  }
+
+  .card-gradient-4 {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
+  }
 }
